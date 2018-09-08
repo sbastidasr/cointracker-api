@@ -14,7 +14,7 @@ app.use(express.json());
 app.use(express.static("public"));
 
 let TOKEN = process.env.token;
-
+let PORT = process.env.PORT || 8080;
 // CORS
 app.use(function(req, res, next) {
   res.header("Access-Control-Allow-Origin", "*");
@@ -84,7 +84,7 @@ app.get("/data/:currencyChoice", (req, res) => {
 // start server
 let server;
 
-function runServer(DATABASE_URL, port = 8080) {
+function runServer(DATABASE_URL, port = PORT) {
   return new Promise((resolve, reject) => {
     server = app
       .listen(port, () => {
